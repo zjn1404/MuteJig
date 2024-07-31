@@ -1,0 +1,21 @@
+server:
+  port:
+    8080
+  servlet:
+    context-path: /mutejig
+
+spring:
+  datasource:
+    url: ${DBMS_CONNECTION:jdbc:mysql://localhost:3306/mutejig}
+    username: ${DBMS_USERNAME:root}
+    password: ${DBMS_PASSWORD:root}
+    driverClassName: "com.mysql.cj.jdbc.Driver"
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+jwt:
+  signerKey: "GF8bIi7ezOnrdsZvh1gt1sHc5E8KnJaybTf88q5GecpO4E6NhR0PENFaBM+ZEyVG"
+  valid-duration: 3600 # in second
+  refreshable-duration: 360000 # in second
