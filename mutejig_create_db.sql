@@ -55,6 +55,7 @@ CREATE TABLE `song` (
     `name`		varchar(150) NOT NULL COLLATE utf8mb4_unicode_ci,
     `type`		varchar(150) NOT NULL,
     upload_date	datetime,
+    `file`		longblob NOT NULL,
     CONSTRAINT `fk_song_user` FOREIGN KEY (`id`) REFERENCES `user`(`id`)
 );
 

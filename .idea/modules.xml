@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MuteJig/MuteJig.iml" filepath="$PROJECT_DIR$/MuteJig/MuteJig.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/mutejig.iml" filepath="$PROJECT_DIR$/.idea/mutejig.iml" />
     </modules>
   </component>
 </project>
