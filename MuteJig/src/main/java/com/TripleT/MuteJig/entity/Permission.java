@@ -1,10 +1,11 @@
 package com.TripleT.MuteJig.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.List;
+import java.util.Set;
 
 @Entity(name = "permission")
 @Getter
@@ -12,7 +13,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
+@Builder
 public class Permission {
     @Id
     @Column(name = "name", nullable = false, unique = true)
@@ -20,4 +21,5 @@ public class Permission {
     
     @Column(name = "description")
     String description;
+
 }

@@ -1,12 +1,18 @@
 package com.TripleT.MuteJig;
 
+import com.TripleT.MuteJig.entity.Permission;
+import com.TripleT.MuteJig.entity.Role;
 import com.TripleT.MuteJig.entity.User;
+import com.TripleT.MuteJig.repository.RoleRepository;
 import com.TripleT.MuteJig.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @SpringBootApplication
 public class MuteJigApplication {
@@ -19,12 +25,25 @@ public class MuteJigApplication {
 
 	}
 
-	@Bean
-	CommandLineRunner init(UserRepository userRepository) {
+//	@Bean
+	CommandLineRunner init(RoleRepository roleRepository) {
 		return args -> {
-			User user = new User("1234", "tuong123", "12345", "tuong@gmail.com", true);
+			Set<Permission> permissions = new HashSet<>();
+			permissions.add(Permission.builder()
+					.name("bo thien ha")
+					.description("nhu ten")
+					.build());
+			permissions.add(Permission.builder()
+					.name("con thien ha")
+					.description("deo cho")
+					.build());
 
-			System.out.println(userRepository.save(user));
+			Role god  = Role.builder()
+					.name("wibu")
+					.description("wibu dinh xa hoi")
+					.permissions(permissions)
+					.build();
+			roleRepository.save(god);
 		};
 	}
 

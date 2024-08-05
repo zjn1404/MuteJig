@@ -1,10 +1,10 @@
 package com.TripleT.MuteJig.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.Set;
 
 @Entity(name = "user")
 @Getter
@@ -29,6 +29,19 @@ public class User {
 
     @Column(name = "enabled")
     boolean enabled;
+
+
+    @ManyToMany(
+            fetch = FetchType.EAGER,
+            cascade = {CascadeType.PERSIST,CascadeType.MERGE,
+                    CascadeType.REFRESH, CascadeType.DETACH}
+    )
+    @JoinTable(
+            name = "user_role",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_name")}
+    )
+    Set<Role> roles;
 
     @Override
     public String toString() {

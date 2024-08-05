@@ -1,10 +1,10 @@
 package com.TripleT.MuteJig.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.Set;
 
 @Entity(name = "playlist")
 @Getter
@@ -15,9 +15,10 @@ import lombok.experimental.FieldDefaults;
 
 public class Playlist {
     @Id
-    @Column(name = "name", nullable = false, unique = true)
+    @Column(name = "id", nullable = false, unique = true)
+    String id;
+
+    @Column(name = "name")
     String name;
 
-    @Column(name = "description")
-    String description;
 }

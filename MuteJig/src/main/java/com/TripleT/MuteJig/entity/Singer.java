@@ -14,9 +14,9 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Singer {
     @Id
-    @Column(name = "name", nullable = false, unique = true)
-    String name;
+    @Column(name = "id", nullable = false, unique = true)
+    String id;
 
-    @Column(name = "description")
-    String description;
+    @Column(name = "name")
+    String name;
 }
