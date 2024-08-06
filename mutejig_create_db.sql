@@ -9,13 +9,11 @@ CREATE TABLE `user` (
 	id			varchar(50) PRIMARY KEY,
     username 	varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL UNIQUE ,
     `password` 	varchar(150) NOT NULL,
-    email 		varchar(150) NOT NULL,
-    `enabled` 	tinyint DEFAULT '0'
+    email 		varchar(150) NOT NULL
 );
 
 CREATE TABLE `user_detail` (
-	id				varchar(50) PRIMARY KEY,
-    user_id			varchar(50) NOT NULL,
+    user_id			varchar(50) PRIMARY KEY NOT NULL,
     first_name		varchar(150) DEFAULT NULL,
     last_name		varchar(150) DEFAULT NULL,
     phone_number	varchar(10)	DEFAULT NULL,
@@ -85,5 +83,9 @@ CREATE TABLE `playlist_song` (
     CONSTRAINT `fk_playlist_playlist` FOREIGN KEY (playlist_id) REFERENCES playlist(id)
 );
 
-
+CREATE TABLE verify_code (
+	verify_code varchar(6) not null unique,
+    user_id varchar(50) COLLATE utf8mb4_bin,
+    CONSTRAINT fk_verifycode_user FOREIGN KEY (user_id) REFERENCES `user`(id)
+);
 

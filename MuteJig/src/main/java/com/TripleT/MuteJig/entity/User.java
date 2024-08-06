@@ -27,10 +27,6 @@ public class User {
     @Column(name = "email", nullable = false)
     String email;
 
-    @Column(name = "enabled")
-    boolean enabled;
-
-
     @ManyToMany(
             fetch = FetchType.EAGER,
             cascade = {CascadeType.PERSIST,CascadeType.MERGE,
@@ -43,6 +39,10 @@ public class User {
     )
     Set<Role> roles;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private UserDetail userDetail;
+
     @Override
     public String toString() {
         return "User{" +
@@ -50,7 +50,6 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", enabled=" + enabled +
                 '}';
     }
 }
