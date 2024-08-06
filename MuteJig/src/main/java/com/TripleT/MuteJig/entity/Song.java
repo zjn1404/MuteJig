@@ -20,9 +20,6 @@ public class Song {
     @Column (name = "id", nullable = false, unique = true)
     String id;
 
-    @Column (name = "poster_id", nullable = false)
-    String posterId;
-
     @Column (name = "name",nullable = false)
     String name;
 
@@ -32,22 +29,12 @@ public class Song {
     @Column(name = "upload_date")
     Date uploadDate;
 
-    @ManyToMany(
-            fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.DETACH,
-                    CascadeType.MERGE,
-                    CascadeType.DETACH
-            }
-    )
-    @JoinTable(
-            name = "playlist_song",
-            joinColumns = {@JoinColumn(name = "song_id")},
-            inverseJoinColumns = {@JoinColumn(name = "playlist_id")}
-    )
-    Set<Playlist> playlists;
-
+    @ManyToOne(cascade = {
+            CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH
+    })
+    @JoinColumn(name = "poster_id")
+    User user;
 
     @ManyToMany(
             fetch = FetchType.LAZY,

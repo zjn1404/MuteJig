@@ -38,7 +38,7 @@ public class UserDetail {
                     CascadeType.REFRESH
             }
     )
-    @MapsId
+    @MapsId("id")
     @JoinColumn(name = "user_id")
     User user;
 }
