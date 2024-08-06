@@ -15,7 +15,7 @@ import java.sql.Date;
 @Builder
 public class UserDetail {
     @Id
-    @Column(name = "id")
+    @Column(name = "user_id")
     String id;
 
     @Column(name = "first_name")
@@ -31,7 +31,6 @@ public class UserDetail {
     Date dob;
 
     @OneToOne(
-            optional = true,
             cascade = {
                     CascadeType.DETACH,
                     CascadeType.MERGE,
@@ -39,8 +38,7 @@ public class UserDetail {
                     CascadeType.REFRESH
             }
     )
-    @JoinColumn(
-            name = "user_id"
-    )
+    @MapsId
+    @JoinColumn(name = "user_id")
     User user;
 }

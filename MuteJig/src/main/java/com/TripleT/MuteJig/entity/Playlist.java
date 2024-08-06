@@ -21,4 +21,19 @@ public class Playlist {
     @Column(name = "name")
     String name;
 
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.DETACH,
+                    CascadeType.MERGE,
+                    CascadeType.DETACH
+            }
+    )
+    @JoinTable(
+            name = "playlist_song",
+            joinColumns = {@JoinColumn(name = "song_id")},
+            inverseJoinColumns = {@JoinColumn(name = "playlist_id")}
+    )
+    Set<Song> songs;
 }

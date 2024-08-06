@@ -1,11 +1,9 @@
 package com.TripleT.MuteJig.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Negative;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.List;
 import java.util.Set;
 
 @Entity(name = "role")
@@ -26,7 +24,7 @@ public class Role {
     @ManyToMany(
             fetch = FetchType.EAGER,
             cascade = {CascadeType.PERSIST,CascadeType.MERGE,
-            CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE}
+            CascadeType.REFRESH, CascadeType.DETACH}
     )
     @JoinTable(
             name = "role_permission",
