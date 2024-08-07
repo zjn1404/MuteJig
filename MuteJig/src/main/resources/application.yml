@@ -19,3 +19,6 @@ jwt:
   signerKey: "GF8bIi7ezOnrdsZvh1gt1sHc5E8KnJaybTf88q5GecpO4E6NhR0PENFaBM+ZEyVG"
   valid-duration: 3600 # in second
   refreshable-duration: 360000 # in second
+
+code:
+  success: 0

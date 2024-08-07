@@ -23,6 +23,7 @@ public class ApplicationInitConfig {
             value = "datasource.driverClassName",
             havingValue = "com.mysql.cj.jdbc.Driver"
     )
+
     public ApplicationRunner applicationRunner() {
         return args -> {
             if (!roleRepository.existsById("ADMIN")) {
