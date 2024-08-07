@@ -1,8 +1,6 @@
 package com.TripleT.MuteJig.dto.response;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 @Getter
