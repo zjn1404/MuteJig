@@ -1,15 +1,17 @@
 package com.TripleT.MuteJig.exception;
 
-import com.TripleT.MuteJig.dto.response.ApiResponse;
+import java.nio.file.AccessDeniedException;
+import java.util.Map;
+import java.util.Objects;
+
 import jakarta.validation.ConstraintViolation;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import java.nio.file.AccessDeniedException;
-import java.util.Map;
-import java.util.Objects;
+import com.TripleT.MuteJig.dto.response.ApiResponse;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -24,7 +26,8 @@ public class GlobalExceptionHandler {
                 .message(ErrorCode.UNCATEGORIZED_EXCEPTION.message)
                 .build();
 
-        return ResponseEntity.status(ErrorCode.UNCATEGORIZED_EXCEPTION.httpStatus).body(apiResponse);
+        return ResponseEntity.status(ErrorCode.UNCATEGORIZED_EXCEPTION.httpStatus)
+                .body(apiResponse);
     }
 
     @ExceptionHandler(value = AppException.class)
@@ -50,7 +53,8 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
-    public ResponseEntity<ApiResponse<Object>> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
+    public ResponseEntity<ApiResponse<Object>> handleMethodArgumentNotValidException(
+            MethodArgumentNotValidException exception) {
         // If msg in @Size is type, ex "PASWORD_INVALID"
         ErrorCode errorCode = ErrorCode.INVALID_KEY;
         Map<String, Object> attributes = null;
@@ -69,9 +73,7 @@ public class GlobalExceptionHandler {
 
         ApiResponse<Object> apiResponse = ApiResponse.builder()
                 .code(errorCode.code)
-                .message(
-                        Objects.isNull(attributes) ? errorCode.message : mapAttribute(errorCode.message, attributes)
-                )
+                .message(Objects.isNull(attributes) ? errorCode.message : mapAttribute(errorCode.message, attributes))
                 .build();
 
         return ResponseEntity.status(errorCode.httpStatus).body(apiResponse);

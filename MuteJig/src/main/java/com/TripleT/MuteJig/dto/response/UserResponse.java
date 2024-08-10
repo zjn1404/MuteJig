@@ -1,13 +1,14 @@
 package com.TripleT.MuteJig.dto.response;
 
+import java.util.Set;
+
 import com.TripleT.MuteJig.entity.Role;
 import com.TripleT.MuteJig.entity.UserDetail;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
-
-import java.util.Set;
 
 @Getter
 @Builder

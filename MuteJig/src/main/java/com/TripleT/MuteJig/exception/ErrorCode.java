@@ -1,7 +1,8 @@
 package com.TripleT.MuteJig.exception;
 
-import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+
+import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public enum ErrorCode {

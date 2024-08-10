@@ -12,6 +12,6 @@ public class PermissionResponse {
 
     String name;
 
-    String description;;
-
+    String description;
+    ;
 }

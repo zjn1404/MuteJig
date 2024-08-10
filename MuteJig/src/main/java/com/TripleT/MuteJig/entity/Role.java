@@ -1,10 +1,11 @@
 package com.TripleT.MuteJig.entity;
 
+import java.util.Set;
+
 import jakarta.persistence.*;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.util.Set;
 
 @Entity(name = "role")
 @Getter
@@ -23,14 +24,10 @@ public class Role {
 
     @ManyToMany(
             fetch = FetchType.EAGER,
-            cascade = {CascadeType.PERSIST,CascadeType.MERGE,
-            CascadeType.REFRESH, CascadeType.DETACH}
-    )
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinTable(
             name = "role_permission",
             joinColumns = {@JoinColumn(name = "role_name")},
-            inverseJoinColumns = {@JoinColumn(name = "permission_name")}
-    )
+            inverseJoinColumns = {@JoinColumn(name = "permission_name")})
     Set<Permission> permissions;
-
 }

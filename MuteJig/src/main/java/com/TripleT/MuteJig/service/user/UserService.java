@@ -13,5 +13,4 @@ public interface UserService {
     UserResponse findById(String id);
 
     void deleteById(String id);
-
 }

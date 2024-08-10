@@ -1,14 +1,16 @@
 package com.TripleT.MuteJig.configuration;
 
-import com.TripleT.MuteJig.entity.Role;
-import com.TripleT.MuteJig.repository.RoleRepository;
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.FieldDefaults;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.TripleT.MuteJig.entity.Role;
+import com.TripleT.MuteJig.repository.RoleRepository;
+
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 @Configuration
 @RequiredArgsConstructor
@@ -21,20 +23,15 @@ public class ApplicationInitConfig {
     @ConditionalOnProperty(
             prefix = "spring",
             value = "datasource.driverClassName",
-            havingValue = "com.mysql.cj.jdbc.Driver"
-    )
-
+            havingValue = "com.mysql.cj.jdbc.Driver")
     public ApplicationRunner applicationRunner() {
         return args -> {
             if (!roleRepository.existsById("ADMIN")) {
 
-                Role adminRole = Role.builder()
-                        .name("ADMIN")
-                        .build();
+                Role adminRole = Role.builder().name("ADMIN").build();
 
                 roleRepository.save(adminRole);
             }
         };
     }
-
 }

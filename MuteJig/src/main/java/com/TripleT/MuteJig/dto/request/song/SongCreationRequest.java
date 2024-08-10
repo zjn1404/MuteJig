@@ -1,13 +1,12 @@
 package com.TripleT.MuteJig.dto.request.song;
 
-import com.TripleT.MuteJig.entity.User;
+import java.sql.Date;
+import java.util.Set;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
-
-import java.sql.Date;
-import java.util.Set;
 
 @Getter
 @Builder
@@ -23,5 +22,4 @@ public class SongCreationRequest {
     String user;
 
     Set<String> singers;
-
 }

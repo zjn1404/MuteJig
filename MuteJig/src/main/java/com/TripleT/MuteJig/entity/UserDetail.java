@@ -1,10 +1,11 @@
 package com.TripleT.MuteJig.entity;
 
+import java.sql.Date;
+
 import jakarta.persistence.*;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.sql.Date;
 
 @Entity(name = "user_detail")
 @Getter
@@ -30,14 +31,7 @@ public class UserDetail {
     @Column(name = "dob")
     Date dob;
 
-    @OneToOne(
-            cascade = {
-                    CascadeType.DETACH,
-                    CascadeType.MERGE,
-                    CascadeType.PERSIST,
-                    CascadeType.REFRESH
-            }
-    )
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @MapsId("id")
     @JoinColumn(name = "user_id")
     User user;

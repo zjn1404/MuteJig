@@ -1,15 +1,17 @@
 package com.TripleT.MuteJig.dto.response;
 
+import java.sql.Date;
+import java.util.Set;
+
+import jakarta.persistence.*;
+
 import com.TripleT.MuteJig.entity.Singer;
 import com.TripleT.MuteJig.entity.User;
-import jakarta.persistence.*;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
-
-import java.sql.Date;
-import java.util.Set;
 
 @Getter
 @Builder
@@ -27,5 +29,4 @@ public class SongResponse {
     User user;
 
     Set<Singer> singers;
-
 }

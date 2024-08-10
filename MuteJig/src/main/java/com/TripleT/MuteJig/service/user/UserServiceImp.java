@@ -1,5 +1,9 @@
 package com.TripleT.MuteJig.service.user;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.TripleT.MuteJig.dto.request.user.UserCreationRequest;
 import com.TripleT.MuteJig.dto.request.user.UserUpdateRequest;
 import com.TripleT.MuteJig.dto.response.UserResponse;
@@ -8,12 +12,10 @@ import com.TripleT.MuteJig.exception.AppException;
 import com.TripleT.MuteJig.exception.ErrorCode;
 import com.TripleT.MuteJig.repository.RoleRepository;
 import com.TripleT.MuteJig.repository.UserRepository;
+
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -44,7 +46,5 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public void deleteById(String id) {
-
-    }
+    public void deleteById(String id) {}
 }
