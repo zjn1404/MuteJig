@@ -1,10 +1,11 @@
 package com.TripleT.MuteJig.entity;
 
+import java.util.Set;
+
 import jakarta.persistence.*;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.util.Set;
 
 @Entity(name = "user")
 @Getter
@@ -29,27 +30,14 @@ public class User {
 
     @ManyToMany(
             fetch = FetchType.EAGER,
-            cascade = {CascadeType.PERSIST,CascadeType.MERGE,
-                    CascadeType.REFRESH, CascadeType.DETACH}
-    )
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinTable(
             name = "user_role",
             joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_name")}
-    )
+            inverseJoinColumns = {@JoinColumn(name = "role_name")})
     Set<Role> roles;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
-    private UserDetail userDetail;
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
+    UserDetail userDetail;
 }
