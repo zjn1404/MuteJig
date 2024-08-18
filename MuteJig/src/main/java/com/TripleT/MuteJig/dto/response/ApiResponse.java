@@ -5,7 +5,10 @@ import lombok.experimental.FieldDefaults;
 
 @Getter
 @Builder
+@Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@NoArgsConstructor
+@AllArgsConstructor
 public class ApiResponse<T> {
 
     int code;
